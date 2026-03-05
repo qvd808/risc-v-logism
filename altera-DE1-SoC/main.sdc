@@ -10,3 +10,7 @@ derive_clock_uncertainty
 # -min: The minimum time (to prevent "hold time" violations)
 set_output_delay -clock { CLOCK_50 } -max 10.0 [get_ports {LEDR[*]}]
 set_output_delay -clock { CLOCK_50 } -min 0.0  [get_ports {LEDR[*]}]
+
+# 3. Input Delay for Keys (Corrected from Output to Input)
+set_input_delay -clock { CLOCK_50 } -max 10.0 [get_ports {KEY[*]}]
+set_input_delay -clock { CLOCK_50 } -min 0.0  [get_ports {KEY[*]}]
