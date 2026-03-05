@@ -1,0 +1,7 @@
+module main (
+    input  wire [9:0] SW,   // 10 Switches
+    output wire [9:0] LEDR  // 10 Red LEDs
+);
+    // Directly maps switches to LEDs to test board connectivity
+    assign LEDR = SW;
+endmodule

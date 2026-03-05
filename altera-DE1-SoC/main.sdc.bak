@@ -1,0 +1,6 @@
+# Create a clock constraint for the 50MHz oscillator on PIN_AF14
+# -period 20.0 means 20ns (which is 1 / 50MHz)
+create_clock -name CLOCK_50 -period 20.000 [get_ports {CLOCK_50}]
+
+# Automatically derive clock uncertainty (jitter/skew)
+derive_clock_uncertainty
