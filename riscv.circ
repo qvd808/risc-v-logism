@@ -189,6 +189,7 @@
       <a name="type" val="output"/>
       <a name="width" val="32"/>
     </comp>
+    <comp lib="0" loc="(180,610)" name="Constant"/>
     <comp lib="0" loc="(1970,1120)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -316,12 +317,13 @@
     <comp lib="4" loc="(780,450)" name="ROM">
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 8 32
-93 a00113 2080b3 fff10113 fe011ce3 193 11a023
+93 a00113 2080b3 fff10113 fe011ce3 193 11a023 12283
+140006f 13 13 13 528293
 </a>
       <a name="dataWidth" val="32"/>
     </comp>
     <comp lib="5" loc="(260,650)" name="Button"/>
-    <comp lib="8" loc="(2717,651)" name="Text">
+    <comp lib="8" loc="(2715,650)" name="Text">
       <a name="text" val="MemtoRegMux"/>
     </comp>
     <comp loc="(1320,510)" name="ControlUnit"/>
@@ -363,7 +365,6 @@
     <wire from="(1360,650)" to="(1360,740)"/>
     <wire from="(1360,740)" to="(1370,740)"/>
     <wire from="(1370,610)" to="(1370,720)"/>
-    <wire from="(140,550)" to="(300,550)"/>
     <wire from="(1440,570)" to="(1440,680)"/>
     <wire from="(1440,680)" to="(2020,680)"/>
     <wire from="(150,180)" to="(270,180)"/>
@@ -411,6 +412,8 @@
     <wire from="(1760,990)" to="(1760,1080)"/>
     <wire from="(1760,990)" to="(1770,990)"/>
     <wire from="(1770,1010)" to="(1770,1020)"/>
+    <wire from="(180,550)" to="(180,610)"/>
+    <wire from="(180,550)" to="(300,550)"/>
     <wire from="(1890,530)" to="(2070,530)"/>
     <wire from="(1890,620)" to="(1890,720)"/>
     <wire from="(1890,620)" to="(1920,620)"/>
@@ -3595,52 +3598,52 @@
       <a name="select" val="2"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="8" loc="(1097,1241)" name="Text">
+    <comp lib="8" loc="(1095,1240)" name="Text">
       <a name="text" val="Positive test"/>
     </comp>
-    <comp lib="8" loc="(1131,1264)" name="Text">
+    <comp lib="8" loc="(1130,1260)" name="Text">
       <a name="text" val="00500093 -&gt; 00000005"/>
     </comp>
-    <comp lib="8" loc="(1132,1285)" name="Text">
+    <comp lib="8" loc="(1130,1285)" name="Text">
       <a name="text" val="00802103 -&gt; 00000008"/>
     </comp>
-    <comp lib="8" loc="(1133,1305)" name="Text">
+    <comp lib="8" loc="(1130,1305)" name="Text">
       <a name="text" val="00202623 -&gt; 0000000C"/>
     </comp>
-    <comp lib="8" loc="(1134,1325)" name="Text">
+    <comp lib="8" loc="(1130,1325)" name="Text">
       <a name="text" val="00000863 -&gt; 00000010"/>
     </comp>
-    <comp lib="8" loc="(1137,1346)" name="Text">
+    <comp lib="8" loc="(1135,1345)" name="Text">
       <a name="text" val="020000EF -&gt; 00000020"/>
     </comp>
-    <comp lib="8" loc="(1301,1243)" name="Text">
+    <comp lib="8" loc="(1300,1240)" name="Text">
       <a name="text" val="Negative Tests"/>
     </comp>
-    <comp lib="8" loc="(1335,1266)" name="Text">
+    <comp lib="8" loc="(1335,1265)" name="Text">
       <a name="text" val="FFF00093 -&gt; FFFFFFFF"/>
     </comp>
-    <comp lib="8" loc="(1336,1287)" name="Text">
+    <comp lib="8" loc="(1335,1285)" name="Text">
       <a name="text" val="FFC02103 -&gt; FFFFFFFC"/>
     </comp>
-    <comp lib="8" loc="(1337,1307)" name="Text">
+    <comp lib="8" loc="(1335,1305)" name="Text">
       <a name="text" val="FE202C23 -&gt; FFFFFFF8"/>
     </comp>
-    <comp lib="8" loc="(1338,1327)" name="Text">
+    <comp lib="8" loc="(1335,1325)" name="Text">
       <a name="text" val="FE000CE3 -&gt; FFFFFFF8"/>
     </comp>
-    <comp lib="8" loc="(1341,1348)" name="Text">
+    <comp lib="8" loc="(1340,1345)" name="Text">
       <a name="text" val="FE1FF0EF -&gt; FFFFFFE0"/>
     </comp>
-    <comp lib="8" loc="(169,1250)" name="Text">
+    <comp lib="8" loc="(165,1250)" name="Text">
       <a name="text" val="I-type, set branch, write, jump to 0"/>
     </comp>
-    <comp lib="8" loc="(437,1246)" name="Text">
+    <comp lib="8" loc="(435,1245)" name="Text">
       <a name="text" val="B-type, set branch to 1"/>
     </comp>
-    <comp lib="8" loc="(667,1252)" name="Text">
+    <comp lib="8" loc="(665,1250)" name="Text">
       <a name="text" val="S-type, set memwrite to 1"/>
     </comp>
-    <comp lib="8" loc="(887,1252)" name="Text">
+    <comp lib="8" loc="(885,1250)" name="Text">
       <a name="text" val="J-type, set jump to 1"/>
     </comp>
     <wire from="(1140,240)" to="(1200,240)"/>
