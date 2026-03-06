@@ -63,7 +63,7 @@ verilate(alucu_sim
 
 
 # ──────────────────────────────
-# ALU Control Unit test
+# ImmGen Unit test
 # ──────────────────────────────
 add_executable(immgen_sim tb/tb_ImmGen.cpp tb/tb_utils.h)
 
@@ -73,6 +73,22 @@ verilate(immgen_sim
     SOURCES
 		rtl/ImmGen.sv
 	TOP_MODULE ImmGen
+    TRACE
+    VERILATOR_ARGS --sv --assert
+)
+
+
+# ──────────────────────────────
+# PC Unit test
+# ──────────────────────────────
+add_executable(pc_sim tb/tb_PC.cpp tb/tb_utils.h)
+
+target_include_directories(pc_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
+
+verilate(pc_sim
+    SOURCES
+		rtl/PC.sv
+	TOP_MODULE PC
     TRACE
     VERILATOR_ARGS --sv --assert
 )
