@@ -15,6 +15,12 @@ alu:
 	@cmake --build $(BUILD_DIR) --target alu_sim
 	@./$(BUILD_DIR)/alu_sim
 
+cu:
+	@mkdir -p $(SIM_DIR)
+	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
+	@cmake --build $(BUILD_DIR) --target cu_sim
+	@./$(BUILD_DIR)/cu_sim
+
 cpu:
 	@mkdir -p $(SIM_DIR)
 	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
