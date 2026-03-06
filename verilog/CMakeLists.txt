@@ -45,5 +45,5 @@ verilate(cu_sim
         assertions/bind_ControlUnit.sv
     TOP_MODULE ControlUnit
     TRACE
-    VERILATOR_ARGS --sv
+    VERILATOR_ARGS --sv --assert
 )

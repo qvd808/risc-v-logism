@@ -36,25 +36,25 @@ module ControlUnit_assert (
     // --- SIGNAL CHECKS ---
     if (is_R) begin
       assert_R_type :
-      assert (RegWrite == 1 && MemWrite == 0 && ALUSrc == 0 && ALUOps == 2'b10)
+      assert (RegWrite == 1 && MemWrite == 0 && MemRead == 0 && ALUSrc == 0 && ALUOps == 2'b10)
       else $error("SVA FAIL: R-Type signals incorrect!");
     end
 
     if (is_I) begin
       assert_I_type :
-      assert (RegWrite == 1 && MemWrite == 0 && ALUSrc == 1 && ALUOps == 2'b00)
+      assert (RegWrite == 1 && MemWrite == 0 && MemRead == 0 && ALUSrc == 1 && ALUOps == 2'b00)
       else $error("SVA FAIL: I-Type signals incorrect!");
     end
 
     if (is_S) begin
       assert_S_type :
-      assert (RegWrite == 0 && MemWrite == 1 && ALUSrc == 1 && ALUOps == 2'b00)
+      assert (RegWrite == 0 && MemWrite == 1 && MemRead == 0 && ALUSrc == 1 && ALUOps == 2'b00)
       else $error("SVA FAIL: S-Type signals incorrect!");
     end
 
     if (is_B) begin
       assert_B_type :
-      assert (RegWrite == 0 && MemWrite == 0 && Branch == 1 && ALUOps == 2'b01)
+      assert (RegWrite == 0 && MemWrite == 0 && MemRead == 0 && Branch == 1 && ALUOps == 2'b01)
       else $error("SVA FAIL: B-Type signals incorrect!");
     end
 
@@ -66,7 +66,7 @@ module ControlUnit_assert (
 
     if (is_L) begin
       assert_L_type :
-      assert (RegWrite == 1 && MemRead == 1 && MemtoReg == 1 && ALUSrc == 1)
+      assert (RegWrite == 1 && MemWrite == 0 && MemRead == 1 && MemtoReg == 1 && ALUSrc == 1)
       else $error("SVA FAIL: Load-Type signals incorrect!");
     end
 
