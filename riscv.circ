@@ -189,7 +189,6 @@
       <a name="type" val="output"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(180,610)" name="Constant"/>
     <comp lib="0" loc="(1970,1120)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -318,7 +317,7 @@
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 8 32
 93 a00113 2080b3 fff10113 fe011ce3 193 11a023 12283
-140006f 13 13 13 528293
+100006f 13 13 13 528293
 </a>
       <a name="dataWidth" val="32"/>
     </comp>
@@ -365,6 +364,7 @@
     <wire from="(1360,650)" to="(1360,740)"/>
     <wire from="(1360,740)" to="(1370,740)"/>
     <wire from="(1370,610)" to="(1370,720)"/>
+    <wire from="(140,550)" to="(300,550)"/>
     <wire from="(1440,570)" to="(1440,680)"/>
     <wire from="(1440,680)" to="(2020,680)"/>
     <wire from="(150,180)" to="(270,180)"/>
@@ -412,8 +412,6 @@
     <wire from="(1760,990)" to="(1760,1080)"/>
     <wire from="(1760,990)" to="(1770,990)"/>
     <wire from="(1770,1010)" to="(1770,1020)"/>
-    <wire from="(180,550)" to="(180,610)"/>
-    <wire from="(180,550)" to="(300,550)"/>
     <wire from="(1890,530)" to="(2070,530)"/>
     <wire from="(1890,620)" to="(1890,720)"/>
     <wire from="(1890,620)" to="(1920,620)"/>
