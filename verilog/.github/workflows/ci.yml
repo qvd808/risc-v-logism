@@ -1,0 +1,41 @@
+# .github/workflows/ci.yml
+name: RISC-V CPU CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Cache build directory
+      uses: actions/cache@v3
+      with:
+        path: build
+        key: ${{ runner.os }}-build-${{ hashFiles('**/*.v', '**/CMakeLists.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
+    - name: Install Verilator
+      run: sudo apt install -y verilator cmake
+
+    - name: Build all
+      run: make all
+
+    - name: Run all tests
+      run: |
+        for sim in ./build/*_sim; do
+          if [ -f "$sim" ]; then
+            echo "=============================="
+            echo "Running: $sim"
+            echo "=============================="
+            $sim
+            if [ $? -ne 0 ]; then
+              echo "FAILED: $sim"
+              exit 1
+            fi
+          fi
+        done
+

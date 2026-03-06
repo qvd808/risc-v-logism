@@ -1,0 +1,23 @@
+# Build directory
+build/
+
+# Simulation outputs
+sim/
+
+# Object files
+*.o
+*.d
+
+# Verilator generated
+obj_dir/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Waveforms
+*.vcd
+
+# Compiled binaries
+*.out
