@@ -32,10 +32,8 @@ verilate(alu_sim
 # ──────────────────────────────
 # Control Unit test
 # ──────────────────────────────
-# Added tb_utils.h here as well
 add_executable(cu_sim tb/tb_ControlUnit.cpp tb/tb_utils.h)
 
-# Tell the C++ compiler to look inside the "tb" directory for header files
 target_include_directories(cu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(cu_sim
@@ -44,6 +42,22 @@ verilate(cu_sim
         assertions/ControlUnit_assert.sv
         assertions/bind_ControlUnit.sv
     TOP_MODULE ControlUnit
+    TRACE
+    VERILATOR_ARGS --sv --assert
+)
+
+# ──────────────────────────────
+# ALU Control Unit test
+# ──────────────────────────────
+add_executable(alucu_sim tb/tb_ALUControlUnit.cpp tb/tb_utils.h)
+
+# Tell the C++ compiler to look inside the "tb" directory for header files
+target_include_directories(alucu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
+
+verilate(alucu_sim
+    SOURCES
+		rtl/ALUControlUnit.sv
+	TOP_MODULE ALUControlUnit
     TRACE
     VERILATOR_ARGS --sv --assert
 )

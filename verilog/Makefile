@@ -21,15 +21,11 @@ cu:
 	@cmake --build $(BUILD_DIR) --target cu_sim
 	@./$(BUILD_DIR)/cu_sim
 
-cpu:
+alucu:
 	@mkdir -p $(SIM_DIR)
 	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target cpu_sim
-	@./$(BUILD_DIR)/cpu_sim
-
-# view waveform
-wave:
-	gtkwave $(SIM_DIR)/alu_waveform.vcd
+	@cmake --build $(BUILD_DIR) --target alucu_sim
+	@./$(BUILD_DIR)/alucu_sim
 
 # clean just build artifacts
 clean:
@@ -41,4 +37,4 @@ cleanall:
 	@rm -rf $(BUILD_DIR) $(SIM_DIR)
 	@echo "Build and sim directories removed"
 
-.PHONY: all alu cpu wave clean cleanall
+.PHONY: all alu cu alucu clean cleanall
