@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
   test_instruction(tb, "bne x1,x2,0", 0x00209063, 0, 0, 0, 0, 0, 1, 0, 0b01);
 
   // JAL uses 0 for ALUOps as per your "keep it simple" decision
-  test_instruction(tb, "jal x1,0", 0x000000EF, 1, 0, 0, 0, 1, 0, 1, 0b11);
+  test_instruction(tb, "jal x1,0", 0x000000EF, 1, 0, 0, 0, 1, 0, 1, 0b00);
 
   test_instruction(tb, "and x1,x2,x3", 0x0031F0B3, 1, 0, 0, 0, 0, 0, 0, 0b10);
   test_instruction(tb, "or x1,x2,x3", 0x0031E0B3, 1, 0, 0, 0, 0, 0, 0, 0b10);
