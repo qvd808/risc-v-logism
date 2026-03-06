@@ -51,13 +51,28 @@ verilate(cu_sim
 # ──────────────────────────────
 add_executable(alucu_sim tb/tb_ALUControlUnit.cpp tb/tb_utils.h)
 
-# Tell the C++ compiler to look inside the "tb" directory for header files
 target_include_directories(alucu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(alucu_sim
     SOURCES
 		rtl/ALUControlUnit.sv
 	TOP_MODULE ALUControlUnit
+    TRACE
+    VERILATOR_ARGS --sv --assert
+)
+
+
+# ──────────────────────────────
+# ALU Control Unit test
+# ──────────────────────────────
+add_executable(immgen_sim tb/tb_ImmGen.cpp tb/tb_utils.h)
+
+target_include_directories(immgen_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
+
+verilate(immgen_sim
+    SOURCES
+		rtl/ImmGen.sv
+	TOP_MODULE ImmGen
     TRACE
     VERILATOR_ARGS --sv --assert
 )
