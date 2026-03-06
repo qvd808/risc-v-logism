@@ -13,7 +13,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("addi x1, x0, 5 ", tb.dut->imm_out, 0x00000005);
 
@@ -22,7 +21,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("lw x2, 8(x0) ", tb.dut->imm_out, 0x00000008);
 
@@ -31,7 +29,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 1;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("sw x2, 12(x0) ", tb.dut->imm_out, 0x0000000C);
 
@@ -40,7 +37,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("beq x0, x0, 16 ", tb.dut->imm_out, 0x00000010);
 
@@ -49,7 +45,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 1;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("jal x1, 32 ", tb.dut->imm_out, 0x00000020);
 
@@ -58,7 +53,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("addi x1, x0, -1 ", tb.dut->imm_out, 0xFFFFFFFF);
 
@@ -67,7 +61,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("lw x2, -4(x0) ", tb.dut->imm_out, 0xFFFFFFFC);
 
@@ -76,7 +69,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 1;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("sw x2, -8(x0)  ", tb.dut->imm_out, 0xFFFFFFF8);
 
@@ -85,7 +77,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 1;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("sw x2, -20(x0) ", tb.dut->imm_out, 0xFFFFFFEC);
 
@@ -94,7 +85,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 0;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("beq x0, x0, -8 ", tb.dut->imm_out, 0xFFFFFFF8);
 
@@ -103,7 +93,6 @@ int main(int argc, char **argv) {
   tb.dut->Jump = 1;
   tb.dut->MemWrite = 0;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("jal x1, -32 ", tb.dut->imm_out, 0xFFFFFFE0);
 

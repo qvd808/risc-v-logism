@@ -16,9 +16,6 @@ void test_instruction(TestBench<VControlUnit> &tb, const char *name,
   tb.dut->instruction = instruction;
   tb.dut->eval();
 
-  // ── dump BEFORE checks so waveform captures input state ───────
-  tb.tfp->dump(tb.ctx->time());
-
   // ── C++ checks ────────────────────────────────────────────────
   int failures = 0;
   failures += tb.check("RegWrite", tb.dut->RegWrite, exp_RegWrite);
@@ -31,16 +28,9 @@ void test_instruction(TestBench<VControlUnit> &tb, const char *name,
   failures += tb.check("ALUOps  ", tb.dut->ALUOps, exp_ALUOps);
 
   if (failures > 0) {
-    // ── extra dump cycles so failing test is wider in GTKWave ─
+    // Make the wave form easier to debug
     tb.tick(10);
-    tb.dut->eval();
-    tb.tfp->dump(tb.ctx->time());
     tb.tick(10);
-    tb.dut->eval();
-    tb.tfp->dump(tb.ctx->time());
-    tb.tick(10);
-    tb.dut->eval();
-    tb.tfp->dump(tb.ctx->time());
   }
 
   // Increment time for the next instruction so they don't overlap

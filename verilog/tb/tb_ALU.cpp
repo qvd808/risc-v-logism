@@ -14,7 +14,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 0x0F0F0F0F;
   tb.dut->ALUops = 0b0000;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("AND ", tb.dut->ALUOut, 0x0F000F00);
 
@@ -23,7 +22,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 0x0F0F0F0F;
   tb.dut->ALUops = 0b0001;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("OR  ", tb.dut->ALUOut, 0xFF0FFF0F);
 
@@ -32,7 +30,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 20;
   tb.dut->ALUops = 0b0010;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("ADD ", tb.dut->ALUOut, 30);
 
@@ -41,7 +38,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 0x55555555;
   tb.dut->ALUops = 0b0011;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("XOR ", tb.dut->ALUOut, 0xFFFFFFFF);
 
@@ -50,7 +46,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 10;
   tb.dut->ALUops = 0b0110;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("SUB ", tb.dut->ALUOut, 20);
 
@@ -59,7 +54,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 10;
   tb.dut->ALUops = 0b0110;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check("ZERO", tb.dut->ALUZero, 1); // Standard check for 1-bit signal
 
@@ -68,7 +62,6 @@ int main(int argc, char **argv) {
   tb.dut->y = 10;
   tb.dut->ALUops = 0b0110;
   tb.dut->eval();
-  tb.tfp->dump(tb.ctx->time());
   tb.tick(CLK_PERIOD);
   tb.check_hex("NEG ", tb.dut->ALUOut, 0xFFFFFFFB);
 
