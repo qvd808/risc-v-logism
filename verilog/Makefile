@@ -39,6 +39,12 @@ pc:
 	@cmake --build $(BUILD_DIR) --target pc_sim
 	@./$(BUILD_DIR)/pc_sim
 
+regfile:
+	@mkdir -p $(SIM_DIR)
+	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
+	@cmake --build $(BUILD_DIR) --target regfile_sim
+	@./$(BUILD_DIR)/regfile_sim
+
 # clean just build artifacts
 clean:
 	@rm -rf $(BUILD_DIR)

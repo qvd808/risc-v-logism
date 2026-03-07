@@ -92,3 +92,19 @@ verilate(pc_sim
     TRACE
     VERILATOR_ARGS --sv --assert
 )
+
+
+# ──────────────────────────────
+# RegFile Unit test
+# ──────────────────────────────
+add_executable(regfile_sim tb/tb_RegFile.cpp tb/tb_utils.h)
+
+target_include_directories(regfile_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
+
+verilate(regfile_sim
+    SOURCES
+		rtl/RegFile.sv
+	TOP_MODULE RegFile
+    TRACE
+    VERILATOR_ARGS --sv --assert
+)
