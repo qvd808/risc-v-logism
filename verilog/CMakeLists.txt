@@ -39,7 +39,7 @@ add_executable(cu_sim tb/tb_ControlUnit.cpp tb/tb_utils.h)
 target_include_directories(cu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(cu_sim
-	PREFIX VCU
+	PREFIX VControlUnit
     SOURCES
         rtl/ControlUnit.sv
         assertions/ControlUnit_assert.sv
