@@ -2,57 +2,43 @@
 BUILD_DIR = build
 SIM_DIR   = sim
 
-# build everything
-all:
+$(BUILD_DIR)/Makefile: CMakeLists.txt
 	@mkdir -p $(SIM_DIR)
 	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR)
 
-# run individual modules
-alu:
-	@mkdir -p $(SIM_DIR)
-	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target alu_sim
+all: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) -j$(nproc)
+
+alu: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target alu_sim -j$(nproc)
 	@./$(BUILD_DIR)/alu_sim
 
-cu:
-	@mkdir -p $(SIM_DIR)
-	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target cu_sim
+cu: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target cu_sim -j$(nproc)
 	@./$(BUILD_DIR)/cu_sim
 
-alucu:
-	@mkdir -p $(SIM_DIR)
-	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target alucu_sim
+alucu: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target alucu_sim -j$(nproc)
 	@./$(BUILD_DIR)/alucu_sim
 
-immgen:
-	@mkdir -p $(SIM_DIR)
-	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target immgen_sim
+immgen: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target immgen_sim -j$(nproc)
 	@./$(BUILD_DIR)/immgen_sim
 
-pc:
-	@mkdir -p $(SIM_DIR)
-	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target pc_sim
+pc: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target pc_sim -j$(nproc)
 	@./$(BUILD_DIR)/pc_sim
 
-regfile:
-	@mkdir -p $(SIM_DIR)
-	@cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Debug
-	@cmake --build $(BUILD_DIR) --target regfile_sim
+regfile: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target regfile_sim -j$(nproc)
 	@./$(BUILD_DIR)/regfile_sim
 
-# clean just build artifacts
 clean:
 	@rm -rf $(BUILD_DIR)
 	@echo "Build directory removed"
 
-# clean everything including sim outputs
 cleanall:
 	@rm -rf $(BUILD_DIR) $(SIM_DIR)
 	@echo "Build and sim directories removed"
 
-.PHONY: all alu cu alucu clean cleanall
+.PHONY: all alu cu alucu immgen pc regfile clean cleanall
