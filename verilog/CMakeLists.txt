@@ -121,11 +121,14 @@ verilate(regfile_sim
 # ──────────────────────────────
 # CPU Unit test
 # ──────────────────────────────
-add_executable(main tb/tb_CPU.cpp tb/tb_utils.h)
+add_executable(main_sim tb/tb_CPU.cpp tb/tb_utils.h)
 
-target_include_directories(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
+target_include_directories(main_sim PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/tb
+    ${CMAKE_BINARY_DIR}/CMakeFiles/main.dir/Vmain.dir
+)
 
-verilate(main
+verilate(main_sim
 	PREFIX Vmain
     SOURCES
 		rtl/main.sv
@@ -137,5 +140,5 @@ verilate(main
 		rtl/ALUControlUnit.sv
 	TOP_MODULE main
     TRACE
-    VERILATOR_ARGS --sv --assert
+    VERILATOR_ARGS --sv --assert --public
 )

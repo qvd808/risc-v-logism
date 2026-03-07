@@ -34,8 +34,8 @@ regfile: $(BUILD_DIR)/Makefile
 	@./$(BUILD_DIR)/regfile_sim
 
 cpu: $(BUILD_DIR)/Makefile
-	@cmake --build $(BUILD_DIR) --target main -j$(nproc)
-	@./$(BUILD_DIR)/main
+	@cmake --build $(BUILD_DIR) --target main_sim -j$(nproc)
+	@./$(BUILD_DIR)/main_sim
 
 clean:
 	@rm -rf $(BUILD_DIR)

@@ -2,8 +2,11 @@ module main (
     input  logic        clk,
     input  logic        areset,
     input  logic        enable,
+    // ROM input
     output logic [31:0] imem_addr,
     input  logic [31:0] imem_data,
+
+    // RAM input
     output logic        dmem_clk,
     output logic [31:0] dmem_addr,
     output logic [31:0] dmem_wdata,

@@ -117,7 +117,7 @@ public:
 
   // ── Hexadecimal Check ──────────────────────────────────────────
   template <typename T_GOT, typename T_EXP>
-  int check_hex(const char *signal, T_GOT got, T_EXP expected, int width = 30) {
+  int check_hex(std::string signal, T_GOT got, T_EXP expected, int width = 30) {
     uint32_t got_val = static_cast<uint32_t>(got);
     uint32_t exp_val = static_cast<uint32_t>(expected);
 
