@@ -33,6 +33,10 @@ regfile: $(BUILD_DIR)/Makefile
 	@cmake --build $(BUILD_DIR) --target regfile_sim -j$(nproc)
 	@./$(BUILD_DIR)/regfile_sim
 
+cpu: $(BUILD_DIR)/Makefile
+	@cmake --build $(BUILD_DIR) --target main -j$(nproc)
+	@./$(BUILD_DIR)/main
+
 clean:
 	@rm -rf $(BUILD_DIR)
 	@echo "Build directory removed"
@@ -41,4 +45,4 @@ cleanall:
 	@rm -rf $(BUILD_DIR) $(SIM_DIR)
 	@echo "Build and sim directories removed"
 
-.PHONY: all alu cu alucu immgen pc regfile clean cleanall
+.PHONY: all alu cu alucu immgen pc regfile cpu clean cleanall

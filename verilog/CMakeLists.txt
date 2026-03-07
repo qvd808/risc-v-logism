@@ -24,6 +24,7 @@ add_executable(alu_sim tb/tb_ALU.cpp tb/tb_utils.h)
 target_include_directories(alu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(alu_sim
+	PREFIX VALU
     SOURCES rtl/ALU.sv
     TOP_MODULE ALU
     TRACE  # Trace waveform
@@ -38,6 +39,7 @@ add_executable(cu_sim tb/tb_ControlUnit.cpp tb/tb_utils.h)
 target_include_directories(cu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(cu_sim
+	PREFIX VCU
     SOURCES
         rtl/ControlUnit.sv
         assertions/ControlUnit_assert.sv
@@ -55,6 +57,7 @@ add_executable(alucu_sim tb/tb_ALUControlUnit.cpp tb/tb_utils.h)
 target_include_directories(alucu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(alucu_sim
+	PREFIX VALUControlUnit
     SOURCES
 		rtl/ALUControlUnit.sv
 	TOP_MODULE ALUControlUnit
@@ -71,6 +74,7 @@ add_executable(immgen_sim tb/tb_ImmGen.cpp tb/tb_utils.h)
 target_include_directories(immgen_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(immgen_sim
+	PREFIX VImmGen
     SOURCES
 		rtl/ImmGen.sv
 	TOP_MODULE ImmGen
@@ -87,6 +91,7 @@ add_executable(pc_sim tb/tb_PC.cpp tb/tb_utils.h)
 target_include_directories(pc_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(pc_sim
+	PREFIX VPC
     SOURCES
 		rtl/PC.sv
         assertions/PC_assert.sv
@@ -105,9 +110,32 @@ add_executable(regfile_sim tb/tb_RegFile.cpp tb/tb_utils.h)
 target_include_directories(regfile_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(regfile_sim
+	PREFIX VRegFile
     SOURCES
 		rtl/RegFile.sv
 	TOP_MODULE RegFile
+    TRACE
+    VERILATOR_ARGS --sv --assert
+)
+
+# ──────────────────────────────
+# CPU Unit test
+# ──────────────────────────────
+add_executable(main tb/tb_CPU.cpp tb/tb_utils.h)
+
+target_include_directories(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
+
+verilate(main
+	PREFIX Vmain
+    SOURCES
+		rtl/main.sv
+		rtl/PC.sv
+		rtl/ControlUnit.sv
+		rtl/ImmGen.sv
+		rtl/RegFile.sv
+		rtl/ALU.sv
+		rtl/ALUControlUnit.sv
+	TOP_MODULE main
     TRACE
     VERILATOR_ARGS --sv --assert
 )
