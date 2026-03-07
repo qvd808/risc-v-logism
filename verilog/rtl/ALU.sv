@@ -8,7 +8,7 @@ module ALU (
 
   reg [31:0] result;
 
-  always @(*) begin
+  always_comb begin
     case (ALUops)
       4'b0000: result = x & y;  // AND
       4'b0001: result = x | y;  // OR

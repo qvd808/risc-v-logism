@@ -73,18 +73,3 @@ module ControlUnit_assert (
   end
 
 endmodule
-
-// --- BIND DIRECTIVE ---
-// This tells the simulator to inject 'ControlUnit_assert' inside 'ControlUnit'
-// automatically without modifying the actual RTL file.
-bind ControlUnit ControlUnit_assert sva_checker (
-    .instruction(instruction),
-    .ALUOps(ALUOps),
-    .ALUSrc(ALUSrc),
-    .MemWrite(MemWrite),
-    .RegWrite(RegWrite),
-    .MemRead(MemRead),
-    .MemtoReg(MemtoReg),
-    .Branch(Branch),
-    .Jump(Jump)
-);

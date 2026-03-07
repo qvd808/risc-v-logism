@@ -24,9 +24,10 @@ add_executable(alu_sim tb/tb_ALU.cpp tb/tb_utils.h)
 target_include_directories(alu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(alu_sim
-    SOURCES rtl/ALU.v
+    SOURCES rtl/ALU.sv
     TOP_MODULE ALU
     TRACE  # Trace waveform
+    VERILATOR_ARGS --sv --assert
 )
 
 # ──────────────────────────────
@@ -88,6 +89,8 @@ target_include_directories(pc_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 verilate(pc_sim
     SOURCES
 		rtl/PC.sv
+        assertions/PC_assert.sv
+        assertions/bind_PC.sv
 	TOP_MODULE PC
     TRACE
     VERILATOR_ARGS --sv --assert
