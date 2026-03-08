@@ -1,0 +1,29 @@
+Step 1 — Get current CPU running on FPGA with BRAM + HPS
+         Verify it works end to end, HPS loads program, CPU executes
+
+Step 2 — Complete full RV32I (single cycle still)
+         Add all 47 instructions, verify each with testbench
+         Still single cycle, easy to debug
+
+Step 3 — Verify RV32I single cycle thoroughly
+         Run a real program (fibonacci, sorting, etc)
+         Baseline measurement of your single cycle
+         Coremark, Dhrystone, or simple custom benchmarks
+         Record CPI, MHz, instructions per second
+
+Step 4 — 5 stage pipeline
+         Start with stalling only (no forwarding)
+         Then add forwarding
+         Then handle branches
+         Compare pipeline vs single cycle
+         See actual improvement from pipelining
+         Measure stall cycles, branch mispredictions
+
+Step 5 — Custom bus protocol
+         Design your bus spec first on paper
+         Implement interconnect
+         Wrap BRAM with your bus interface
+
+Step 6 — UART peripheral
+         Write from scratch using Ch 8 of your book
+         Connect it to your custom bus as a slave
