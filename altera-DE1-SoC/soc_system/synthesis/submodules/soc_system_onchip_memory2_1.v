@@ -30,6 +30,7 @@ module soc_system_onchip_memory2_1 (
                                       clk2,
                                       clken,
                                       clken2,
+                                      debugaccess,
                                       freeze,
                                       reset,
                                       reset2,
@@ -46,7 +47,7 @@ module soc_system_onchip_memory2_1 (
                                    )
 ;
 
-  parameter INIT_FILE = "soc_system_onchip_memory2_1.hex";
+  parameter INIT_FILE = "onchip_mem.mif";
 
 
   output  [ 31: 0] readdata;
@@ -61,6 +62,7 @@ module soc_system_onchip_memory2_1 (
   input            clk2;
   input            clken;
   input            clken2;
+  input            debugaccess;
   input            freeze;
   input            reset;
   input            reset2;
@@ -78,10 +80,10 @@ wire    [ 31: 0] readdata;
 wire    [ 31: 0] readdata2;
 wire             wren;
 wire             wren2;
-  assign wren = chipselect & write;
+  assign wren = chipselect & write & debugaccess;
   assign clocken0 = clken & ~reset_req;
   assign clocken1 = clken2 & ~reset_req2;
-  assign wren2 = chipselect2 & write2;
+  assign wren2 = chipselect2 & write2 & debugaccess;
   altsyncram the_altsyncram
     (
       .address_a (address),

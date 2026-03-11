@@ -1,0 +1,21 @@
+DEPTH = 256;
+WIDTH = 32;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT BEGIN
+    00 : 00000093;
+    01 : 00a00113;
+    02 : 002080b3;
+    03 : fff10113;
+    04 : fe011ce3;
+    05 : 00000193;
+    06 : 0011a023;
+    07 : 0001a283;
+    08 : 0100006f;
+    09 : 00000013;
+    0A : 00000013;
+    0B : 00000013;
+    0C : 00528293;
+    [0D..FF] : 00000000; -- Fills the rest with 0x0 instead of NOP
+END;

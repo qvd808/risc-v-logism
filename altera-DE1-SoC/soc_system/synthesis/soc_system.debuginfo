@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="system" version="24.1" fabric="QSYS">
  <!-- Format version 24.1 1077 (Future versions may contain additional information.) -->
- <!-- 2026.03.10.11:41:14 -->
+ <!-- 2026.03.10.22:53:31 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1773167999</value>
+  <value>1773208341</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -43619,7 +43619,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_CONTENTS_FILE</name>
-   <value>soc_system_onchip_memory2_1</value>
+   <value>onchip_mem</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
@@ -43631,7 +43631,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RAM_BLOCK_TYPE</name>
@@ -43655,7 +43655,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.WRITABLE</name>
-   <value>1</value>
+   <value>0</value>
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.DAT_SYM_INSTALL_DIR</name>
@@ -43683,7 +43683,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_FILENAME</name>
-   <value>soc_system_onchip_memory2_1</value>
+   <value>onchip_mem</value>
   </assignment>
   <assignment>
    <name>postgeneration.simulation.init_file.param_name</name>
@@ -43759,9 +43759,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>onchip_mem.hex</value>
+   <value>onchip_mem.mif</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -43847,7 +43847,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="useNonDefaultInitFile">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -43857,7 +43857,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>false</visible>
    <valid>true</valid>
   </parameter>
@@ -43871,7 +43871,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="writable">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -43970,7 +43970,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>soc_system_onchip_memory2_1.hex</value>
+   <value>onchip_mem.mif</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -44043,7 +44043,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>embeddedsw.configuration.isNonVolatileStorage</name>
-    <value>0</value>
+    <value>1</value>
    </assignment>
    <assignment>
     <name>embeddedsw.configuration.isPrintableDevice</name>
@@ -44203,7 +44203,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="isNonVolatileStorage">
     <type>boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -44370,6 +44370,12 @@ parameters are a RESULT of the module parameters. -->
     <role>address</role>
    </port>
    <port>
+    <name>debugaccess</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>debugaccess</role>
+   </port>
+   <port>
     <name>clken</name>
     <direction>Input</direction>
     <width>1</width>
@@ -44471,7 +44477,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>embeddedsw.configuration.isNonVolatileStorage</name>
-    <value>0</value>
+    <value>1</value>
    </assignment>
    <assignment>
     <name>embeddedsw.configuration.isPrintableDevice</name>
@@ -44631,7 +44637,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="isNonVolatileStorage">
     <type>boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -44952,7 +44958,7 @@ the requested settings for a module instance. -->
   </assignment>
   <parameter name="COMPOSE_CONTENTS">
    <type>java.lang.String</type>
-   <value><![CDATA[add_instance {onchip_memory2_0_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ADDRESS_W} {13};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_ADDRESS_W} {30};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_READLATENCY} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READ} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_AV_CLKEN} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {onchip_memory2_1_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ADDRESS_W} {12};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_ADDRESS_W} {30};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_READLATENCY} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READ} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_AV_CLKEN} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {hps_0_h2f_axi_master_agent} {altera_merlin_axi_master_ni};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ID_WIDTH} {12};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ADDR_WIDTH} {30};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {RDATA_WIDTH} {64};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {WDATA_WIDTH} {64};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ADDR_USER_WIDTH} {1};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {DATA_USER_WIDTH} {1};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {USE_ADDR_USER} {0};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {AXI_VERSION} {AXI3};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {WRITE_ISSUING_CAPABILITY} {8};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {READ_ISSUING_CAPABILITY} {8};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BEGIN_BURST} {131};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_CACHE_H} {153};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_CACHE_L} {150};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_SIDEBAND_H} {129};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_SIDEBAND_L} {129};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_PROTECTION_H} {149};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_PROTECTION_L} {147};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_SIZE_H} {126};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_SIZE_L} {124};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_TYPE_H} {128};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_TYPE_L} {127};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_RESPONSE_STATUS_L} {154};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_RESPONSE_STATUS_H} {155};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURSTWRAP_H} {123};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURSTWRAP_L} {116};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTE_CNT_H} {115};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTE_CNT_L} {108};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_H} {101};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_L} {72};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_EXCLUSIVE} {107};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_LOCK} {106};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_COMPRESSED_READ} {102};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_POSTED} {103};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_WRITE} {104};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_READ} {105};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_H} {63};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_L} {0};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTEEN_H} {71};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTEEN_L} {64};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_SRC_ID_H} {133};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_SRC_ID_L} {133};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DEST_ID_H} {134};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DEST_ID_L} {134};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_THREAD_ID_H} {146};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_THREAD_ID_L} {135};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_QOS_L} {132};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_QOS_H} {132};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ORI_BURST_SIZE_L} {156};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ORI_BURST_SIZE_H} {158};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_SIDEBAND_H} {130};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_SIDEBAND_L} {130};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ST_DATA_W} {159};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ST_CHANNEL_W} {2};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ID} {0};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ADDR_MAP} {<?xml version="1.0" encoding="UTF-8"?>
+   <value><![CDATA[add_instance {onchip_memory2_0_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ADDRESS_W} {13};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_ADDRESS_W} {30};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_READLATENCY} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READ} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_AV_CLKEN} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {onchip_memory2_0_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {onchip_memory2_1_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ADDRESS_W} {12};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_DATA_W} {32};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_ADDRESS_W} {30};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_READLATENCY} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READ} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_AV_CLKEN} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_DEBUGACCESS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {onchip_memory2_1_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {hps_0_h2f_axi_master_agent} {altera_merlin_axi_master_ni};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ID_WIDTH} {12};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ADDR_WIDTH} {30};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {RDATA_WIDTH} {64};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {WDATA_WIDTH} {64};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ADDR_USER_WIDTH} {1};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {DATA_USER_WIDTH} {1};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {USE_ADDR_USER} {0};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {AXI_VERSION} {AXI3};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {WRITE_ISSUING_CAPABILITY} {8};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {READ_ISSUING_CAPABILITY} {8};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BEGIN_BURST} {131};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_CACHE_H} {153};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_CACHE_L} {150};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_SIDEBAND_H} {129};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_SIDEBAND_L} {129};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_PROTECTION_H} {149};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_PROTECTION_L} {147};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_SIZE_H} {126};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_SIZE_L} {124};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_TYPE_H} {128};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURST_TYPE_L} {127};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_RESPONSE_STATUS_L} {154};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_RESPONSE_STATUS_H} {155};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURSTWRAP_H} {123};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BURSTWRAP_L} {116};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTE_CNT_H} {115};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTE_CNT_L} {108};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_H} {101};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ADDR_L} {72};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_EXCLUSIVE} {107};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_LOCK} {106};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_COMPRESSED_READ} {102};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_POSTED} {103};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_WRITE} {104};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_TRANS_READ} {105};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_H} {63};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_L} {0};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTEEN_H} {71};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_BYTEEN_L} {64};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_SRC_ID_H} {133};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_SRC_ID_L} {133};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DEST_ID_H} {134};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DEST_ID_L} {134};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_THREAD_ID_H} {146};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_THREAD_ID_L} {135};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_QOS_L} {132};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_QOS_H} {132};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ORI_BURST_SIZE_L} {156};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_ORI_BURST_SIZE_H} {158};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_SIDEBAND_H} {130};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {PKT_DATA_SIDEBAND_L} {130};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ST_DATA_W} {159};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ST_CHANNEL_W} {2};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ID} {0};set_instance_parameter_value {hps_0_h2f_axi_master_agent} {ADDR_MAP} {<?xml version="1.0" encoding="UTF-8"?>
 <address_map>
  <slave
    id="0"
@@ -46071,6 +46077,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>1</width>
     <role>clken</role>
+   </port>
+   <port>
+    <name>onchip_memory2_1_s1_debugaccess</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>debugaccess</role>
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -47935,5 +47947,5 @@ parameters are a RESULT of the module parameters. -->
   <version>24.1</version>
  </plugin>
  <reportVersion>24.1 1077</reportVersion>
- <uniqueIdentifier>00090FAA00010000019CD90CABA5</uniqueIdentifier>
+ <uniqueIdentifier>00090FAA00010000019CDB7444BF</uniqueIdentifier>
 </EnsembleReport>
