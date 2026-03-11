@@ -18,6 +18,7 @@ module main (
   wire [31:0] address_to_load;
   wire        load_address;
   wire [31:0] PC_Address;
+  wire        halt;
 
   PC pc (
       .clk            (clk),
@@ -25,7 +26,8 @@ module main (
       .areset         (areset),
       .address_to_load(address_to_load),
       .load_address   (load_address),
-      .PC_Address     (PC_Address)
+      .PC_Address     (PC_Address),
+      .halt           (halt)
   );
 
   // ── Control Unit ──────────────────────────────────────────────
@@ -34,15 +36,16 @@ module main (
   wire MemRead, MemtoReg, Branch, Jump;
 
   ControlUnit cu (
-      .instruction(imem_data),
-      .ALUOps     (ALUOps),
-      .ALUSrc     (ALUSrc),
-      .MemWrite   (MemWrite),
-      .RegWrite   (RegWrite),
-      .MemRead    (MemRead),
-      .MemtoReg   (MemtoReg),
-      .Branch     (Branch),
-      .Jump       (Jump)
+      .instruction  (imem_data),
+      .ALUOps       (ALUOps),
+      .ALUSrc       (ALUSrc),
+      .MemWrite     (MemWrite),
+      .RegWrite     (RegWrite),
+      .MemRead      (MemRead),
+      .MemtoReg     (MemtoReg),
+      .Branch       (Branch),
+      .Jump         (Jump),
+      .halt_detected(halt)
   );
 
   // ── ImmGen ────────────────────────────────────────────────────

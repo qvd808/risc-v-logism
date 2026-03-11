@@ -42,6 +42,7 @@ verilate(cu_sim
 	PREFIX VControlUnit
     SOURCES
         rtl/ControlUnit.sv
+		tb/tb_ControlUnit.cpp
         assertions/ControlUnit_assert.sv
         assertions/bind_ControlUnit.sv
     TOP_MODULE ControlUnit
