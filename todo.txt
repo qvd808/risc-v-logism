@@ -1,14 +1,52 @@
 Step 1 — Get current CPU running on FPGA with BRAM + HPS
-         Verify it works end to end, HPS loads program, CPU executes
-
-Step 2 — Complete full RV32I (single cycle still)
-         Add all 47 instructions, verify each with testbench
+         Verify it works end to end, HPS loads program, CPU executes Complete
+Step 2 — Complete full RV32I (single cycle still): 
+		 - Current: add, addi, sub, and, or, xor, jal, beq, bne, lw, sw
+		 - Need to add: 
          Still single cycle, easy to debug
+
+| **Instruction** | **Type** | **Opcode [6:0]** | **Funct3** | **Funct7** | **Immediate / Details** |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Integer Register-Immediate Instructions** | | | | | |
+| **SLTI**  | **I** | `0010011` | `010` | N/A | `rd = (rs1 < imm) ? 1 : 0` (signed) |
+| **SLTIU** | **I** | `0010011` | `011` | N/A | `rd = (rs1 < imm) ? 1 : 0` (unsigned) |
+| **ANDI**  | **I** | `0010011` | `111` | N/A | `rd = rs1 & imm` |
+| **ORI**   | **I** | `0010011` | `110` | N/A | `rd = rs1 | imm` |
+| **XORI**  | **I** | `0010011` | `100` | N/A | `rd = rs1 ^ imm` |
+| **SLLI**  | **I** | `0010011` | `001` | `0000000` | `rd = rs1 << shamt` |
+| **SRLI**  | **I** | `0010011` | `101` | `0000000` | `rd = rs1 >> shamt` (logical) |
+| **SRAI**  | **I** | `0010011` | `101` | `0100000` | `rd = rs1 >> shamt` (arithmetic) |
+| **LUI**   | **U** | `0110111` | N/A | N/A | `rd = imm << 12` |
+| **AUIPC** | **U** | `0010111` | N/A | N/A | `rd = PC + (imm << 12)` |
+| **Integer Register-Register Instructions** | | | | | |
+| **SLT**   | **R** | `0110011` | `010` | `0000000` | `rd = (rs1 < rs2) ? 1 : 0` (signed) |
+| **SLTU**  | **R** | `0110011` | `011` | `0000000` | `rd = (rs1 < rs2) ? 1 : 0` (unsigned) |
+| **SLL**   | **R** | `0110011` | `001` | `0000000` | `rd = rs1 << rs2[4:0]` |
+| **SRL**   | **R** | `0110011` | `101` | `0000000` | `rd = rs1 >> rs2[4:0]` (logical) |
+| **SRA**   | **R** | `0110011` | `101` | `0100000` | `rd = rs1 >> rs2[4:0]` (arithmetic) |
+| **Control Transfer (Jumps & Branches)** | | | | | |
+| **JALR**  | **I** | `1100111` | `000` | N/A | `rd = PC + 4; PC = (rs1 + imm) & ~1` |
+| **BLT**   | **B** | `1100011` | `100` | N/A | `if (rs1 < rs2) PC += imm` (signed) |
+| **BLTU**  | **B** | `1100011` | `110` | N/A | `if (rs1 < rs2) PC += imm` (unsigned) |
+| **BGE**   | **B** | `1100011` | `101` | N/A | `if (rs1 >= rs2) PC += imm` (signed) |
+| **BGEU**  | **B** | `1100011` | `111` | N/A | `if (rs1 >= rs2) PC += imm` (unsigned) |
+| **Loads and Stores** | | | | | |
+| **LB**    | **I** | `0000011` | `000` | N/A | `rd = sign_ext(M[rs1 + imm][7:0])` |
+| **LBU**   | **I** | `0000011` | `100` | N/A | `rd = zero_ext(M[rs1 + imm][7:0])` |
+| **LH**    | **I** | `0000011` | `001` | N/A | `rd = sign_ext(M[rs1 + imm][15:0])` |
+| **LHU**   | **I** | `0000011` | `101` | N/A | `rd = zero_ext(M[rs1 + imm][15:0])` |
+| **SB**    | **S** | `0100011` | `000` | N/A | `M[rs1 + imm][7:0] = rs2[7:0]` |
+| **SH**    | **S** | `0100011` | `001` | N/A | `M[rs1 + imm][15:0] = rs2[15:0]` |
+| **System and Memory Ordering** | | | | | |
+| **FENCE** | **I** | `0001111` | `000` | N/A | Order device I/O and memory accesses |
+| **ECALL** | **I** | `1110011` | `000` | N/A | Env Call (Fixed 12-bit `imm` = `0x000`) |
+| **EBREAK**| **I** | `1110011` | `000` | N/A | Env Break (Fixed 12-bit `imm` = `0x001`) |
 
 Step 3 — Verify RV32I single cycle thoroughly
          Run a real program (fibonacci, sorting, etc)
          Baseline measurement of your single cycle
          Coremark, Dhrystone, or simple custom benchmarks
+		 Timing Verification, Constrained Random Verification
          Record CPI, MHz, instructions per second
 
 Step 4 — 5 stage pipeline
