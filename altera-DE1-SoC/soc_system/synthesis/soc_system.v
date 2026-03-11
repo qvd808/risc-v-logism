@@ -9,10 +9,7 @@ module soc_system (
 		output wire        hps_0_h2f_mpu_events_evento,     //                     .evento
 		output wire [1:0]  hps_0_h2f_mpu_events_standbywfe, //                     .standbywfe
 		output wire [1:0]  hps_0_h2f_mpu_events_standbywfi, //                     .standbywfi
-		inout  wire        hps_io_hps_io_sdio_inst_CMD,     //               hps_io.hps_io_sdio_inst_CMD
-		inout  wire        hps_io_hps_io_sdio_inst_D0,      //                     .hps_io_sdio_inst_D0
-		output wire        hps_io_hps_io_sdio_inst_CLK,     //                     .hps_io_sdio_inst_CLK
-		input  wire        hps_io_hps_io_uart0_inst_RX,     //                     .hps_io_uart0_inst_RX
+		input  wire        hps_io_hps_io_uart0_inst_RX,     //               hps_io.hps_io_uart0_inst_RX
 		output wire        hps_io_hps_io_uart0_inst_TX,     //                     .hps_io_uart0_inst_TX
 		output wire [12:0] memory_mem_a,                    //               memory.mem_a
 		output wire [2:0]  memory_mem_ba,                   //                     .mem_ba
@@ -37,6 +34,13 @@ module soc_system (
 		output wire [31:0] onchip_memory2_0_s2_readdata,    //                     .readdata
 		input  wire [31:0] onchip_memory2_0_s2_writedata,   //                     .writedata
 		input  wire [3:0]  onchip_memory2_0_s2_byteenable,  //                     .byteenable
+		input  wire [11:0] onchip_memory2_1_s2_address,     //  onchip_memory2_1_s2.address
+		input  wire        onchip_memory2_1_s2_chipselect,  //                     .chipselect
+		input  wire        onchip_memory2_1_s2_clken,       //                     .clken
+		input  wire        onchip_memory2_1_s2_write,       //                     .write
+		output wire [31:0] onchip_memory2_1_s2_readdata,    //                     .readdata
+		input  wire [31:0] onchip_memory2_1_s2_writedata,   //                     .writedata
+		input  wire [3:0]  onchip_memory2_1_s2_byteenable,  //                     .byteenable
 		input  wire        reset_reset_n                    //                reset.reset_n
 	);
 
@@ -83,11 +87,18 @@ module soc_system (
 	wire         mm_interconnect_0_onchip_memory2_0_s1_write;      // mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_writedata;  // mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	wire         mm_interconnect_0_onchip_memory2_0_s1_clken;      // mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
-	wire         rst_controller_reset_out_reset;                   // rst_controller:reset_out -> [mm_interconnect_0:onchip_memory2_0_reset1_reset_bridge_in_reset_reset, onchip_memory2_0:reset]
-	wire         rst_controller_reset_out_reset_req;               // rst_controller:reset_req -> onchip_memory2_0:reset_req
+	wire         mm_interconnect_0_onchip_memory2_1_s1_chipselect; // mm_interconnect_0:onchip_memory2_1_s1_chipselect -> onchip_memory2_1:chipselect
+	wire  [31:0] mm_interconnect_0_onchip_memory2_1_s1_readdata;   // onchip_memory2_1:readdata -> mm_interconnect_0:onchip_memory2_1_s1_readdata
+	wire  [11:0] mm_interconnect_0_onchip_memory2_1_s1_address;    // mm_interconnect_0:onchip_memory2_1_s1_address -> onchip_memory2_1:address
+	wire   [3:0] mm_interconnect_0_onchip_memory2_1_s1_byteenable; // mm_interconnect_0:onchip_memory2_1_s1_byteenable -> onchip_memory2_1:byteenable
+	wire         mm_interconnect_0_onchip_memory2_1_s1_write;      // mm_interconnect_0:onchip_memory2_1_s1_write -> onchip_memory2_1:write
+	wire  [31:0] mm_interconnect_0_onchip_memory2_1_s1_writedata;  // mm_interconnect_0:onchip_memory2_1_s1_writedata -> onchip_memory2_1:writedata
+	wire         mm_interconnect_0_onchip_memory2_1_s1_clken;      // mm_interconnect_0:onchip_memory2_1_s1_clken -> onchip_memory2_1:clken
+	wire         rst_controller_reset_out_reset;                   // rst_controller:reset_out -> [mm_interconnect_0:onchip_memory2_0_reset1_reset_bridge_in_reset_reset, onchip_memory2_0:reset, onchip_memory2_1:reset]
+	wire         rst_controller_reset_out_reset_req;               // rst_controller:reset_req -> [onchip_memory2_0:reset_req, onchip_memory2_1:reset_req]
 	wire         hps_0_h2f_reset_reset;                            // hps_0:h2f_rst_n -> rst_controller:reset_in0
-	wire         rst_controller_001_reset_out_reset;               // rst_controller_001:reset_out -> onchip_memory2_0:reset2
-	wire         rst_controller_001_reset_out_reset_req;           // rst_controller_001:reset_req -> onchip_memory2_0:reset_req2
+	wire         rst_controller_001_reset_out_reset;               // rst_controller_001:reset_out -> [onchip_memory2_0:reset2, onchip_memory2_1:reset2]
+	wire         rst_controller_001_reset_out_reset_req;           // rst_controller_001:reset_req -> [onchip_memory2_0:reset_req2, onchip_memory2_1:reset_req2]
 
 	soc_system_hps_0 #(
 		.F2S_Width (2),
@@ -113,10 +124,7 @@ module soc_system (
 		.mem_odt              (memory_mem_odt),                  //                  .mem_odt
 		.mem_dm               (memory_mem_dm),                   //                  .mem_dm
 		.oct_rzqin            (memory_oct_rzqin),                //                  .oct_rzqin
-		.hps_io_sdio_inst_CMD (hps_io_hps_io_sdio_inst_CMD),     //            hps_io.hps_io_sdio_inst_CMD
-		.hps_io_sdio_inst_D0  (hps_io_hps_io_sdio_inst_D0),      //                  .hps_io_sdio_inst_D0
-		.hps_io_sdio_inst_CLK (hps_io_hps_io_sdio_inst_CLK),     //                  .hps_io_sdio_inst_CLK
-		.hps_io_uart0_inst_RX (hps_io_hps_io_uart0_inst_RX),     //                  .hps_io_uart0_inst_RX
+		.hps_io_uart0_inst_RX (hps_io_hps_io_uart0_inst_RX),     //            hps_io.hps_io_uart0_inst_RX
 		.hps_io_uart0_inst_TX (hps_io_hps_io_uart0_inst_TX),     //                  .hps_io_uart0_inst_TX
 		.h2f_rst_n            (hps_0_h2f_reset_reset),           //         h2f_reset.reset_n
 		.f2h_sdram0_clk       (clk_clk),                         //  f2h_sdram0_clock.clk
@@ -295,6 +303,30 @@ module soc_system (
 		.freeze      (1'b0)                                              // (terminated)
 	);
 
+	soc_system_onchip_memory2_1 onchip_memory2_1 (
+		.clk         (clk_clk),                                          //   clk1.clk
+		.address     (mm_interconnect_0_onchip_memory2_1_s1_address),    //     s1.address
+		.clken       (mm_interconnect_0_onchip_memory2_1_s1_clken),      //       .clken
+		.chipselect  (mm_interconnect_0_onchip_memory2_1_s1_chipselect), //       .chipselect
+		.write       (mm_interconnect_0_onchip_memory2_1_s1_write),      //       .write
+		.readdata    (mm_interconnect_0_onchip_memory2_1_s1_readdata),   //       .readdata
+		.writedata   (mm_interconnect_0_onchip_memory2_1_s1_writedata),  //       .writedata
+		.byteenable  (mm_interconnect_0_onchip_memory2_1_s1_byteenable), //       .byteenable
+		.reset       (rst_controller_reset_out_reset),                   // reset1.reset
+		.reset_req   (rst_controller_reset_out_reset_req),               //       .reset_req
+		.address2    (onchip_memory2_1_s2_address),                      //     s2.address
+		.chipselect2 (onchip_memory2_1_s2_chipselect),                   //       .chipselect
+		.clken2      (onchip_memory2_1_s2_clken),                        //       .clken
+		.write2      (onchip_memory2_1_s2_write),                        //       .write
+		.readdata2   (onchip_memory2_1_s2_readdata),                     //       .readdata
+		.writedata2  (onchip_memory2_1_s2_writedata),                    //       .writedata
+		.byteenable2 (onchip_memory2_1_s2_byteenable),                   //       .byteenable
+		.clk2        (clk_clk),                                          //   clk2.clk
+		.reset2      (rst_controller_001_reset_out_reset),               // reset2.reset
+		.reset_req2  (rst_controller_001_reset_out_reset_req),           //       .reset_req
+		.freeze      (1'b0)                                              // (terminated)
+	);
+
 	soc_system_mm_interconnect_0 mm_interconnect_0 (
 		.hps_0_h2f_axi_master_awid                           (hps_0_h2f_axi_master_awid),                        //                          hps_0_h2f_axi_master.awid
 		.hps_0_h2f_axi_master_awaddr                         (hps_0_h2f_axi_master_awaddr),                      //                                              .awaddr
@@ -340,7 +372,14 @@ module soc_system (
 		.onchip_memory2_0_s1_writedata                       (mm_interconnect_0_onchip_memory2_0_s1_writedata),  //                                              .writedata
 		.onchip_memory2_0_s1_byteenable                      (mm_interconnect_0_onchip_memory2_0_s1_byteenable), //                                              .byteenable
 		.onchip_memory2_0_s1_chipselect                      (mm_interconnect_0_onchip_memory2_0_s1_chipselect), //                                              .chipselect
-		.onchip_memory2_0_s1_clken                           (mm_interconnect_0_onchip_memory2_0_s1_clken)       //                                              .clken
+		.onchip_memory2_0_s1_clken                           (mm_interconnect_0_onchip_memory2_0_s1_clken),      //                                              .clken
+		.onchip_memory2_1_s1_address                         (mm_interconnect_0_onchip_memory2_1_s1_address),    //                           onchip_memory2_1_s1.address
+		.onchip_memory2_1_s1_write                           (mm_interconnect_0_onchip_memory2_1_s1_write),      //                                              .write
+		.onchip_memory2_1_s1_readdata                        (mm_interconnect_0_onchip_memory2_1_s1_readdata),   //                                              .readdata
+		.onchip_memory2_1_s1_writedata                       (mm_interconnect_0_onchip_memory2_1_s1_writedata),  //                                              .writedata
+		.onchip_memory2_1_s1_byteenable                      (mm_interconnect_0_onchip_memory2_1_s1_byteenable), //                                              .byteenable
+		.onchip_memory2_1_s1_chipselect                      (mm_interconnect_0_onchip_memory2_1_s1_chipselect), //                                              .chipselect
+		.onchip_memory2_1_s1_clken                           (mm_interconnect_0_onchip_memory2_1_s1_clken)       //                                              .clken
 	);
 
 	altera_reset_controller #(

@@ -5,9 +5,6 @@
 			hps_0_h2f_mpu_events_evento     : out   std_logic;                                        -- evento
 			hps_0_h2f_mpu_events_standbywfe : out   std_logic_vector(1 downto 0);                     -- standbywfe
 			hps_0_h2f_mpu_events_standbywfi : out   std_logic_vector(1 downto 0);                     -- standbywfi
-			hps_io_hps_io_sdio_inst_CMD     : inout std_logic                     := 'X';             -- hps_io_sdio_inst_CMD
-			hps_io_hps_io_sdio_inst_D0      : inout std_logic                     := 'X';             -- hps_io_sdio_inst_D0
-			hps_io_hps_io_sdio_inst_CLK     : out   std_logic;                                        -- hps_io_sdio_inst_CLK
 			hps_io_hps_io_uart0_inst_RX     : in    std_logic                     := 'X';             -- hps_io_uart0_inst_RX
 			hps_io_hps_io_uart0_inst_TX     : out   std_logic;                                        -- hps_io_uart0_inst_TX
 			memory_mem_a                    : out   std_logic_vector(12 downto 0);                    -- mem_a
@@ -33,6 +30,13 @@
 			onchip_memory2_0_s2_readdata    : out   std_logic_vector(31 downto 0);                    -- readdata
 			onchip_memory2_0_s2_writedata   : in    std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			onchip_memory2_0_s2_byteenable  : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			onchip_memory2_1_s2_address     : in    std_logic_vector(11 downto 0) := (others => 'X'); -- address
+			onchip_memory2_1_s2_chipselect  : in    std_logic                     := 'X';             -- chipselect
+			onchip_memory2_1_s2_clken       : in    std_logic                     := 'X';             -- clken
+			onchip_memory2_1_s2_write       : in    std_logic                     := 'X';             -- write
+			onchip_memory2_1_s2_readdata    : out   std_logic_vector(31 downto 0);                    -- readdata
+			onchip_memory2_1_s2_writedata   : in    std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			onchip_memory2_1_s2_byteenable  : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			reset_reset_n                   : in    std_logic                     := 'X'              -- reset_n
 		);
 	end component soc_system;
@@ -44,10 +48,7 @@
 			hps_0_h2f_mpu_events_evento     => CONNECTED_TO_hps_0_h2f_mpu_events_evento,     --                     .evento
 			hps_0_h2f_mpu_events_standbywfe => CONNECTED_TO_hps_0_h2f_mpu_events_standbywfe, --                     .standbywfe
 			hps_0_h2f_mpu_events_standbywfi => CONNECTED_TO_hps_0_h2f_mpu_events_standbywfi, --                     .standbywfi
-			hps_io_hps_io_sdio_inst_CMD     => CONNECTED_TO_hps_io_hps_io_sdio_inst_CMD,     --               hps_io.hps_io_sdio_inst_CMD
-			hps_io_hps_io_sdio_inst_D0      => CONNECTED_TO_hps_io_hps_io_sdio_inst_D0,      --                     .hps_io_sdio_inst_D0
-			hps_io_hps_io_sdio_inst_CLK     => CONNECTED_TO_hps_io_hps_io_sdio_inst_CLK,     --                     .hps_io_sdio_inst_CLK
-			hps_io_hps_io_uart0_inst_RX     => CONNECTED_TO_hps_io_hps_io_uart0_inst_RX,     --                     .hps_io_uart0_inst_RX
+			hps_io_hps_io_uart0_inst_RX     => CONNECTED_TO_hps_io_hps_io_uart0_inst_RX,     --               hps_io.hps_io_uart0_inst_RX
 			hps_io_hps_io_uart0_inst_TX     => CONNECTED_TO_hps_io_hps_io_uart0_inst_TX,     --                     .hps_io_uart0_inst_TX
 			memory_mem_a                    => CONNECTED_TO_memory_mem_a,                    --               memory.mem_a
 			memory_mem_ba                   => CONNECTED_TO_memory_mem_ba,                   --                     .mem_ba
@@ -72,6 +73,13 @@
 			onchip_memory2_0_s2_readdata    => CONNECTED_TO_onchip_memory2_0_s2_readdata,    --                     .readdata
 			onchip_memory2_0_s2_writedata   => CONNECTED_TO_onchip_memory2_0_s2_writedata,   --                     .writedata
 			onchip_memory2_0_s2_byteenable  => CONNECTED_TO_onchip_memory2_0_s2_byteenable,  --                     .byteenable
+			onchip_memory2_1_s2_address     => CONNECTED_TO_onchip_memory2_1_s2_address,     --  onchip_memory2_1_s2.address
+			onchip_memory2_1_s2_chipselect  => CONNECTED_TO_onchip_memory2_1_s2_chipselect,  --                     .chipselect
+			onchip_memory2_1_s2_clken       => CONNECTED_TO_onchip_memory2_1_s2_clken,       --                     .clken
+			onchip_memory2_1_s2_write       => CONNECTED_TO_onchip_memory2_1_s2_write,       --                     .write
+			onchip_memory2_1_s2_readdata    => CONNECTED_TO_onchip_memory2_1_s2_readdata,    --                     .readdata
+			onchip_memory2_1_s2_writedata   => CONNECTED_TO_onchip_memory2_1_s2_writedata,   --                     .writedata
+			onchip_memory2_1_s2_byteenable  => CONNECTED_TO_onchip_memory2_1_s2_byteenable,  --                     .byteenable
 			reset_reset_n                   => CONNECTED_TO_reset_reset_n                    --                reset.reset_n
 		);
 

@@ -5,8 +5,13 @@
   <columns>
    <connections preferredWidth="111" />
    <irq preferredWidth="34" />
+   <opcodeName preferredWidth="114" />
+   <tags preferredWidth="119" />
+   <inputclock preferredWidth="206" />
+   <export preferredWidth="403" />
+   <name preferredWidth="328" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1752" height="1008" x="0" y="0" />
+ <library expandedCategories="Project,Library" />
+ <window width="3872" height="2312" x="-16" y="-16" />
 </preferences>

@@ -5,9 +5,6 @@ module soc_system (
 	hps_0_h2f_mpu_events_evento,
 	hps_0_h2f_mpu_events_standbywfe,
 	hps_0_h2f_mpu_events_standbywfi,
-	hps_io_hps_io_sdio_inst_CMD,
-	hps_io_hps_io_sdio_inst_D0,
-	hps_io_hps_io_sdio_inst_CLK,
 	hps_io_hps_io_uart0_inst_RX,
 	hps_io_hps_io_uart0_inst_TX,
 	memory_mem_a,
@@ -33,6 +30,13 @@ module soc_system (
 	onchip_memory2_0_s2_readdata,
 	onchip_memory2_0_s2_writedata,
 	onchip_memory2_0_s2_byteenable,
+	onchip_memory2_1_s2_address,
+	onchip_memory2_1_s2_chipselect,
+	onchip_memory2_1_s2_clken,
+	onchip_memory2_1_s2_write,
+	onchip_memory2_1_s2_readdata,
+	onchip_memory2_1_s2_writedata,
+	onchip_memory2_1_s2_byteenable,
 	reset_reset_n);	
 
 	input		clk_clk;
@@ -40,9 +44,6 @@ module soc_system (
 	output		hps_0_h2f_mpu_events_evento;
 	output	[1:0]	hps_0_h2f_mpu_events_standbywfe;
 	output	[1:0]	hps_0_h2f_mpu_events_standbywfi;
-	inout		hps_io_hps_io_sdio_inst_CMD;
-	inout		hps_io_hps_io_sdio_inst_D0;
-	output		hps_io_hps_io_sdio_inst_CLK;
 	input		hps_io_hps_io_uart0_inst_RX;
 	output		hps_io_hps_io_uart0_inst_TX;
 	output	[12:0]	memory_mem_a;
@@ -68,5 +69,12 @@ module soc_system (
 	output	[31:0]	onchip_memory2_0_s2_readdata;
 	input	[31:0]	onchip_memory2_0_s2_writedata;
 	input	[3:0]	onchip_memory2_0_s2_byteenable;
+	input	[11:0]	onchip_memory2_1_s2_address;
+	input		onchip_memory2_1_s2_chipselect;
+	input		onchip_memory2_1_s2_clken;
+	input		onchip_memory2_1_s2_write;
+	output	[31:0]	onchip_memory2_1_s2_readdata;
+	input	[31:0]	onchip_memory2_1_s2_writedata;
+	input	[3:0]	onchip_memory2_1_s2_byteenable;
 	input		reset_reset_n;
 endmodule

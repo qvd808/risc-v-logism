@@ -4,10 +4,7 @@
 		.hps_0_h2f_mpu_events_evento     (<connected-to-hps_0_h2f_mpu_events_evento>),     //                     .evento
 		.hps_0_h2f_mpu_events_standbywfe (<connected-to-hps_0_h2f_mpu_events_standbywfe>), //                     .standbywfe
 		.hps_0_h2f_mpu_events_standbywfi (<connected-to-hps_0_h2f_mpu_events_standbywfi>), //                     .standbywfi
-		.hps_io_hps_io_sdio_inst_CMD     (<connected-to-hps_io_hps_io_sdio_inst_CMD>),     //               hps_io.hps_io_sdio_inst_CMD
-		.hps_io_hps_io_sdio_inst_D0      (<connected-to-hps_io_hps_io_sdio_inst_D0>),      //                     .hps_io_sdio_inst_D0
-		.hps_io_hps_io_sdio_inst_CLK     (<connected-to-hps_io_hps_io_sdio_inst_CLK>),     //                     .hps_io_sdio_inst_CLK
-		.hps_io_hps_io_uart0_inst_RX     (<connected-to-hps_io_hps_io_uart0_inst_RX>),     //                     .hps_io_uart0_inst_RX
+		.hps_io_hps_io_uart0_inst_RX     (<connected-to-hps_io_hps_io_uart0_inst_RX>),     //               hps_io.hps_io_uart0_inst_RX
 		.hps_io_hps_io_uart0_inst_TX     (<connected-to-hps_io_hps_io_uart0_inst_TX>),     //                     .hps_io_uart0_inst_TX
 		.memory_mem_a                    (<connected-to-memory_mem_a>),                    //               memory.mem_a
 		.memory_mem_ba                   (<connected-to-memory_mem_ba>),                   //                     .mem_ba
@@ -32,6 +29,13 @@
 		.onchip_memory2_0_s2_readdata    (<connected-to-onchip_memory2_0_s2_readdata>),    //                     .readdata
 		.onchip_memory2_0_s2_writedata   (<connected-to-onchip_memory2_0_s2_writedata>),   //                     .writedata
 		.onchip_memory2_0_s2_byteenable  (<connected-to-onchip_memory2_0_s2_byteenable>),  //                     .byteenable
+		.onchip_memory2_1_s2_address     (<connected-to-onchip_memory2_1_s2_address>),     //  onchip_memory2_1_s2.address
+		.onchip_memory2_1_s2_chipselect  (<connected-to-onchip_memory2_1_s2_chipselect>),  //                     .chipselect
+		.onchip_memory2_1_s2_clken       (<connected-to-onchip_memory2_1_s2_clken>),       //                     .clken
+		.onchip_memory2_1_s2_write       (<connected-to-onchip_memory2_1_s2_write>),       //                     .write
+		.onchip_memory2_1_s2_readdata    (<connected-to-onchip_memory2_1_s2_readdata>),    //                     .readdata
+		.onchip_memory2_1_s2_writedata   (<connected-to-onchip_memory2_1_s2_writedata>),   //                     .writedata
+		.onchip_memory2_1_s2_byteenable  (<connected-to-onchip_memory2_1_s2_byteenable>),  //                     .byteenable
 		.reset_reset_n                   (<connected-to-reset_reset_n>)                    //                reset.reset_n
 	);
 

@@ -18,7 +18,7 @@
     <config name='periph_pll_c0' value='511' />
     <config name='periph_pll_c1' value='511' />
     <config name='periph_pll_c2' value='511' />
-    <config name='periph_pll_c3' value='4' />
+    <config name='periph_pll_c3' value='511' />
     <config name='periph_pll_c4' value='9' />
     <config name='periph_pll_c5' value='511' />
     <config name='usb_mp_clk_div' value='4' />
@@ -46,8 +46,8 @@
     <config name='emac0_clk_hz' value='1953125' />
     <config name='emac1_clk_hz' value='1953125' />
     <config name='usb_mp_clk_hz' value='6250000' />
-    <config name='nand_clk_hz' value='50000000' />
-    <config name='sdmmc_clk_hz' value='200000000' />
+    <config name='nand_clk_hz' value='488281' />
+    <config name='sdmmc_clk_hz' value='1953125' />
     <config name='qspi_clk_hz' value='3613281' />
     <config name='spi_m_clk_hz' value='6250000' />
     <config name='can0_clk_hz' value='6250000' />
@@ -76,8 +76,8 @@
       <config name='CONFIG_HPS_QSPI_CS1' value='0' />
       <config name='CONFIG_HPS_QSPI_CS0' value='0' />
     </peripheral>
-    <peripheral name='sdmmc' used='true'>
-      <config name='CONFIG_HPS_SDMMC_BUSWIDTH' value='1' />
+    <peripheral name='sdmmc' used='false'>
+      <config name='CONFIG_HPS_SDMMC_BUSWIDTH' value='0' />
     </peripheral>
     <peripheral name='usb0' used='false' />
     <peripheral name='usb1' used='false' />
@@ -106,9 +106,6 @@
     <peripheral name='trace' used='false' />
   </peripherals>
   <pin_muxes>
-    <pin_mux name='FLASHIO0' choice='SDIO_CMD' value='3' />
-    <pin_mux name='FLASHIO2' choice='SDIO_D0' value='3' />
-    <pin_mux name='FLASHIO9' choice='SDIO_CLK' value='3' />
     <pin_mux name='GENERALIO1' choice='UART0_RX' value='1' />
     <pin_mux name='GENERALIO2' choice='UART0_TX' value='1' />
     <pin_mux name='GPLMUX0' choice='GPIO' value='1' />

@@ -30,40 +30,8 @@ module soc_system_hps_0_hps_io_border(
  ,output wire [1 - 1 : 0 ] mem_dm
  ,input wire [1 - 1 : 0 ] oct_rzqin
 // hps_io
- ,inout wire [1 - 1 : 0 ] hps_io_sdio_inst_CMD
- ,inout wire [1 - 1 : 0 ] hps_io_sdio_inst_D0
- ,output wire [1 - 1 : 0 ] hps_io_sdio_inst_CLK
  ,input wire [1 - 1 : 0 ] hps_io_uart0_inst_RX
  ,output wire [1 - 1 : 0 ] hps_io_uart0_inst_TX
-);
-
-assign hps_io_sdio_inst_CMD = intermediate[1] ? intermediate[0] : 'z;
-assign hps_io_sdio_inst_D0 = intermediate[3] ? intermediate[2] : 'z;
-
-wire [4 - 1 : 0] intermediate;
-
-cyclonev_hps_peripheral_sdmmc sdio_inst(
- .SDMMC_DATA_I({
-    hps_io_sdio_inst_D0[0:0] // 0:0
-  })
-,.SDMMC_CMD_O({
-    intermediate[0:0] // 0:0
-  })
-,.SDMMC_CCLK({
-    hps_io_sdio_inst_CLK[0:0] // 0:0
-  })
-,.SDMMC_DATA_O({
-    intermediate[2:2] // 0:0
-  })
-,.SDMMC_CMD_OE({
-    intermediate[1:1] // 0:0
-  })
-,.SDMMC_CMD_I({
-    hps_io_sdio_inst_CMD[0:0] // 0:0
-  })
-,.SDMMC_DATA_OE({
-    intermediate[3:3] // 0:0
-  })
 );
 
 

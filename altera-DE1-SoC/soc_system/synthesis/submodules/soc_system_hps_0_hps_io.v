@@ -23,10 +23,7 @@ module soc_system_hps_0_hps_io (
 		output wire        mem_odt,              //       .mem_odt
 		output wire        mem_dm,               //       .mem_dm
 		input  wire        oct_rzqin,            //       .oct_rzqin
-		inout  wire        hps_io_sdio_inst_CMD, // hps_io.hps_io_sdio_inst_CMD
-		inout  wire        hps_io_sdio_inst_D0,  //       .hps_io_sdio_inst_D0
-		output wire        hps_io_sdio_inst_CLK, //       .hps_io_sdio_inst_CLK
-		input  wire        hps_io_uart0_inst_RX, //       .hps_io_uart0_inst_RX
+		input  wire        hps_io_uart0_inst_RX, // hps_io.hps_io_uart0_inst_RX
 		output wire        hps_io_uart0_inst_TX  //       .hps_io_uart0_inst_TX
 	);
 
@@ -47,10 +44,7 @@ module soc_system_hps_0_hps_io (
 		.mem_odt              (mem_odt),              //       .mem_odt
 		.mem_dm               (mem_dm),               //       .mem_dm
 		.oct_rzqin            (oct_rzqin),            //       .oct_rzqin
-		.hps_io_sdio_inst_CMD (hps_io_sdio_inst_CMD), // hps_io.hps_io_sdio_inst_CMD
-		.hps_io_sdio_inst_D0  (hps_io_sdio_inst_D0),  //       .hps_io_sdio_inst_D0
-		.hps_io_sdio_inst_CLK (hps_io_sdio_inst_CLK), //       .hps_io_sdio_inst_CLK
-		.hps_io_uart0_inst_RX (hps_io_uart0_inst_RX), //       .hps_io_uart0_inst_RX
+		.hps_io_uart0_inst_RX (hps_io_uart0_inst_RX), // hps_io.hps_io_uart0_inst_RX
 		.hps_io_uart0_inst_TX (hps_io_uart0_inst_TX)  //       .hps_io_uart0_inst_TX
 	);
 

@@ -1,8 +1,8 @@
 module main (
-    input  wire       CLOCK_50, // 50MHz Clock
+    input  wire       CLOCK_50,
     input  wire [0:0] KEY,      
 	 
-	 // HPS DDR3 Pins
+    // HPS DDR3 Pins
     output wire [14:0] HPS_DDR3_ADDR,
     output wire [2:0]  HPS_DDR3_BA,
     output wire        HPS_DDR3_CAS_N,
@@ -23,17 +23,17 @@ module main (
     // HPS Minimum I/O
     output wire        HPS_UART_TX,
     input  wire        HPS_UART_RX,
-    output wire        HPS_SD_CLK,
-    inout  wire        HPS_SD_CMD,
-    inout  wire [3:0]  HPS_SD_DATA,
+//    output wire        HPS_SD_CLK,
+//    inout  wire        HPS_SD_CMD,
+//    inout  wire [3:0]  HPS_SD_DATA,
 
     // FPGA LEDs
     output wire [9:0]  LEDR
 );
 
     wire [31:0] hps_to_fpga_data;
+    wire [31:0] hps_to_fpga_data_rom; // second memory read data
 
-    // --- Minimalist System Instantiation ---
     soc_system u0 (
         .clk_clk                           (CLOCK_50),
         .reset_reset_n                     (KEY[0]),
@@ -57,24 +57,39 @@ module main (
         .memory_oct_rzqin                  (HPS_DDR3_RZQ),
 
         // HPS I/O (SD Card & UART)
-        .hps_io_hps_io_sdio_inst_CLK       (HPS_SD_CLK),
-        .hps_io_hps_io_sdio_inst_CMD       (HPS_SD_CMD),
-        .hps_io_hps_io_sdio_inst_D0        (HPS_SD_DATA[0]),
+//        .hps_io_hps_io_sdio_inst_CLK       (HPS_SD_CLK),
+//        .hps_io_hps_io_sdio_inst_CMD       (HPS_SD_CMD),
+//        .hps_io_hps_io_sdio_inst_D0        (HPS_SD_DATA[0]),
+//        .hps_io_hps_io_sdio_inst_D1        (HPS_SD_DATA[1]),
+//        .hps_io_hps_io_sdio_inst_D2        (HPS_SD_DATA[2]),
+//        .hps_io_hps_io_sdio_inst_D3        (HPS_SD_DATA[3]),
         .hps_io_hps_io_uart0_inst_RX       (HPS_UART_RX),
         .hps_io_hps_io_uart0_inst_TX       (HPS_UART_TX),
 
-        // BRAM Test Port
+        // First on-chip memory (Linux writes, FPGA reads/writes)
         .onchip_memory2_0_s2_address       (13'h0),
         .onchip_memory2_0_s2_chipselect    (1'b1),
         .onchip_memory2_0_s2_clken         (1'b1),
         .onchip_memory2_0_s2_write         (1'b0),
         .onchip_memory2_0_s2_readdata      (hps_to_fpga_data),
-        .onchip_memory2_0_s2_byteenable    (4'hF)
+        .onchip_memory2_0_s2_byteenable    (4'hF),
+
+        // Second on-chip memory (Linux writes, FPGA reads only)
+        .onchip_memory2_1_s2_address       (13'h0),
+        .onchip_memory2_1_s2_chipselect    (1'b1),
+        .onchip_memory2_1_s2_clken         (1'b1),
+        .onchip_memory2_1_s2_write         (1'b0),  // FPGA never writes
+        .onchip_memory2_1_s2_readdata      (hps_to_fpga_data_rom),
+        .onchip_memory2_1_s2_byteenable    (4'hF)
     );
 
-    // If data at address 0 is '2', LED 2 lights up!
+    // First memory: LED 2 lights if address 0 == 2
     assign LEDR[2] = (hps_to_fpga_data == 32'd2);
-    assign LEDR[9:3] = 7'b0;
+
+    // Second memory: LED 3 lights if address 0 == 3 (example)
+    assign LEDR[3] = (hps_to_fpga_data_rom == 32'd3);
+
+    assign LEDR[9:4] = 6'b0;
     assign LEDR[1:0] = 2'b0;
 
 endmodule

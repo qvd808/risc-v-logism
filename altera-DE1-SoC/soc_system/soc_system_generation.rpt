@@ -8,6 +8,8 @@ Progress: Adding hps_0 [altera_hps 24.1]
 Progress: Parameterizing module hps_0
 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 24.1]
 Progress: Parameterizing module onchip_memory2_0
+Progress: Adding onchip_memory2_1 [altera_avalon_onchip_memory2 24.1]
+Progress: Parameterizing module onchip_memory2_1
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
@@ -30,6 +32,8 @@ Progress: Adding hps_0 [altera_hps 24.1]
 Progress: Parameterizing module hps_0
 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 24.1]
 Progress: Parameterizing module onchip_memory2_0
+Progress: Adding onchip_memory2_1 [altera_avalon_onchip_memory2 24.1]
+Progress: Parameterizing module onchip_memory2_1
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
@@ -40,7 +44,6 @@ Warning: soc_system.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (d
 Warning: soc_system.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
 Warning: soc_system.hps_0: HPS model no longer supports simulation for HPS FPGA Bridges.
 Info: soc_system: Generating "soc_system" for QUARTUS_SYNTH
-Info: Interconnect is inserted between master hps_0.h2f_axi_master and slave onchip_memory2_0.s1 because the master is of type axi and the slave is of type avalon.
 Info: hps_0: "Running  for module: hps_0"
 Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
@@ -49,10 +52,15 @@ Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely,
 Warning: hps_0: HPS model no longer supports simulation for HPS FPGA Bridges.
 Info: hps_0: "soc_system" instantiated altera_hps "hps_0"
 Info: onchip_memory2_0: Starting RTL generation for module 'soc_system_onchip_memory2_0'
-Info: onchip_memory2_0:   Generation command is [exec cmd /c {set LC_ALL=C&& C:/intelfpga_lite/24.1std/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/24.1std/quartus/bin64/perl/lib -I C:/intelfpga_lite/24.1std/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/24.1std/quartus/sopc_builder/bin -I C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_system_onchip_memory2_0 --dir=C:/Users/dqvin/AppData/Local/Temp/alt0519_7236321724601153410.dir/0002_onchip_memory2_0_gen/ --quartus_dir=C:/intelfpga_lite/24.1std/quartus --verilog --config=C:/Users/dqvin/AppData/Local/Temp/alt0519_7236321724601153410.dir/0002_onchip_memory2_0_gen//soc_system_onchip_memory2_0_component_configuration.pl --do_build_sim=0}]
+Info: onchip_memory2_0:   Generation command is [exec cmd /c {set LC_ALL=C&& C:/intelfpga_lite/24.1std/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/24.1std/quartus/bin64/perl/lib -I C:/intelfpga_lite/24.1std/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/24.1std/quartus/sopc_builder/bin -I C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_system_onchip_memory2_0 --dir=C:/Users/dqvin/AppData/Local/Temp/alt0522_4209109440684546363.dir/0002_onchip_memory2_0_gen/ --quartus_dir=C:/intelfpga_lite/24.1std/quartus --verilog --config=C:/Users/dqvin/AppData/Local/Temp/alt0522_4209109440684546363.dir/0002_onchip_memory2_0_gen//soc_system_onchip_memory2_0_component_configuration.pl --do_build_sim=0}]
 Info: onchip_memory2_0: Done RTL generation for module 'soc_system_onchip_memory2_0'
 Info: onchip_memory2_0: "soc_system" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: onchip_memory2_1: Starting RTL generation for module 'soc_system_onchip_memory2_1'
+Info: onchip_memory2_1:   Generation command is [exec cmd /c {set LC_ALL=C&& C:/intelfpga_lite/24.1std/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/24.1std/quartus/bin64/perl/lib -I C:/intelfpga_lite/24.1std/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/24.1std/quartus/sopc_builder/bin -I C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga_lite/24.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_system_onchip_memory2_1 --dir=C:/Users/dqvin/AppData/Local/Temp/alt0522_4209109440684546363.dir/0003_onchip_memory2_1_gen/ --quartus_dir=C:/intelfpga_lite/24.1std/quartus --verilog --config=C:/Users/dqvin/AppData/Local/Temp/alt0522_4209109440684546363.dir/0003_onchip_memory2_1_gen//soc_system_onchip_memory2_1_component_configuration.pl --do_build_sim=0}]
+Info: onchip_memory2_1: Done RTL generation for module 'soc_system_onchip_memory2_1'
+Info: onchip_memory2_1: "soc_system" instantiated altera_avalon_onchip_memory2 "onchip_memory2_1"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "soc_system" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: rst_controller: "soc_system" instantiated altera_reset_controller "rst_controller"
 Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
@@ -63,8 +71,11 @@ Info: onchip_memory2_0_s1_agent: "mm_interconnect_0" instantiated altera_merlin_
 Info: onchip_memory2_0_s1_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "onchip_memory2_0_s1_agent_rsp_fifo"
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: hps_0_h2f_axi_master_wr_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "hps_0_h2f_axi_master_wr_limiter"
+Info: Reusing file D:/Programming/FPGA/logism-riscv-design/altera-DE1-SoC/soc_system/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: onchip_memory2_0_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "onchip_memory2_0_s1_burst_adapter"
 Info: Reusing file D:/Programming/FPGA/logism-riscv-design/altera-DE1-SoC/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file D:/Programming/FPGA/logism-riscv-design/altera-DE1-SoC/soc_system/synthesis/submodules/altera_avalon_st_pipeline_base.v
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
@@ -76,6 +87,6 @@ Info: Reusing file D:/Programming/FPGA/logism-riscv-design/altera-DE1-SoC/soc_sy
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: soc_system: Done "soc_system" with 22 modules, 80 files
+Info: soc_system: Done "soc_system" with 24 modules, 84 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis
