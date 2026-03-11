@@ -1,0 +1,83 @@
+# RV32I Instruction Set Architecture
+instruction_set: RV32I_Base
+
+types:
+  R_type:
+    description: "Register-to-Register operations"
+    instructions:
+      ADD:
+        encoding:
+          opcode: "0110011"
+          funct3: "000"
+          funct7: "0000000"
+        operation: "rd = rs1 + rs2"
+      SUB:
+        encoding:
+          opcode: "0110011"
+          funct3: "000"
+          funct7: "0100000"
+        operation: "rd = rs1 - rs2"
+      AND:
+        encoding:
+          opcode: "0110011"
+          funct3: "111"
+          funct7: "0000000"
+        operation: "rd = rs1 & rs2"
+      OR:
+        encoding:
+          opcode: "0110011"
+          funct3: "110"
+          funct7: "0000000"
+        operation: "rd = rs1 | rs2"
+      XOR:
+        encoding:
+          opcode: "0110011"
+          funct3: "100"
+          funct7: "0000000"
+        operation: "rd = rs1 ^ rs2"
+
+  I_type:
+    description: "Immediate operations"
+    instructions:
+      ADDI:
+        encoding:
+          opcode: "0010011"
+          funct3: "000"
+        operation: "rd = rs1 + imm"
+      LW:
+        encoding:
+          opcode: "0000011"
+          funct3: "010"
+        operation: "rd = M[ rs1 + imm ]"
+
+  S_type:
+    description: "Store operations"
+    instructions:
+      SW:
+        encoding:
+          opcode: "0100011"
+          funct3: "010"
+        operation: "M[ rs1 + imm ] = rs2"
+
+  B_type:
+    description: "Branch instruction"
+    instructions:
+      BEQ:
+        encoding:
+          opcode: "1100011"
+          funct3: "000"
+        operation: "if (rs1 == rs2) PC += imm"
+
+      BNE:
+        encoding:
+          opcode: "1100011"
+          funct3: "001"
+        operation: "if (rs1 != rs2) PC += imm"
+
+  J_type:
+    description: "Jump instruction"
+    instructions:
+      JAL:
+        encoding:
+          opcode: "1101111"
+        operation: "rd = PC + 4; PC += imm"
