@@ -58,8 +58,7 @@ module soc_system_mm_interconnect_0 (
 		output wire [31:0] onchip_memory2_1_s1_writedata,                       //                                              .writedata
 		output wire [3:0]  onchip_memory2_1_s1_byteenable,                      //                                              .byteenable
 		output wire        onchip_memory2_1_s1_chipselect,                      //                                              .chipselect
-		output wire        onchip_memory2_1_s1_clken,                           //                                              .clken
-		output wire        onchip_memory2_1_s1_debugaccess                      //                                              .debugaccess
+		output wire        onchip_memory2_1_s1_clken                            //                                              .clken
 	);
 
 	wire   [31:0] onchip_memory2_0_s1_agent_m0_readdata;                   // onchip_memory2_0_s1_translator:uav_readdata -> onchip_memory2_0_s1_agent:m0_readdata
@@ -412,7 +411,6 @@ module soc_system_mm_interconnect_0 (
 		.av_byteenable          (onchip_memory2_1_s1_byteenable),                      //                         .byteenable
 		.av_chipselect          (onchip_memory2_1_s1_chipselect),                      //                         .chipselect
 		.av_clken               (onchip_memory2_1_s1_clken),                           //                         .clken
-		.av_debugaccess         (onchip_memory2_1_s1_debugaccess),                     //                         .debugaccess
 		.av_read                (),                                                    //              (terminated)
 		.av_begintransfer       (),                                                    //              (terminated)
 		.av_beginbursttransfer  (),                                                    //              (terminated)
@@ -422,6 +420,7 @@ module soc_system_mm_interconnect_0 (
 		.av_writebyteenable     (),                                                    //              (terminated)
 		.av_lock                (),                                                    //              (terminated)
 		.uav_clken              (1'b0),                                                //              (terminated)
+		.av_debugaccess         (),                                                    //              (terminated)
 		.av_outputenable        (),                                                    //              (terminated)
 		.uav_response           (),                                                    //              (terminated)
 		.av_response            (2'b00),                                               //              (terminated)

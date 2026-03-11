@@ -49,22 +49,22 @@ preplace inst soc_system.hps_0.nand0 -pg 1
 preplace inst soc_system.hps_0.gpio2 -pg 1
 preplace inst soc_system.hps_0.arm_gic_0 -pg 1
 preplace inst soc_system.hps_0 -pg 1 -lvl 2 -y 50
-preplace inst soc_system.clk_0 -pg 1 -lvl 1 -y 130
+preplace inst soc_system.clk_0 -pg 1 -lvl 1 -y 110
 preplace inst soc_system.onchip_memory2_0 -pg 1 -lvl 3 -y 30
 preplace inst soc_system.hps_0.f2s_periph_ref_clk -pg 1
 preplace inst soc_system.hps_0.fpga_interfaces -pg 1
 preplace inst soc_system.onchip_memory2_1 -pg 1 -lvl 3 -y 290
 preplace inst soc_system.hps_0.axi_sdram -pg 1
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)soc_system.reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)hps_0.h2f_axi_clock,(MASTER)clk_0.clk,(SLAVE)hps_0.f2h_sdram0_clock,(SLAVE)onchip_memory2_0.clk1,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)onchip_memory2_1.clk1,(SLAVE)onchip_memory2_0.clk2,(SLAVE)onchip_memory2_1.clk2,(SLAVE)hps_0.h2f_lw_axi_clock) 1 1 2 410 270 820
 preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_0.s2,(SLAVE)soc_system.onchip_memory2_0_s2) 1 0 3 NJ 350 NJ 310 NJ
 preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)hps_0.memory,(SLAVE)soc_system.memory) 1 0 2 NJ 200 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_1.clk1,(SLAVE)onchip_memory2_1.clk2,(SLAVE)onchip_memory2_0.clk2,(SLAVE)hps_0.f2h_sdram0_clock,(SLAVE)onchip_memory2_0.clk1,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)hps_0.h2f_lw_axi_clock,(MASTER)clk_0.clk,(SLAVE)hps_0.h2f_axi_clock) 1 1 2 410 270 820
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.hps_io,(SLAVE)hps_0.hps_io) 1 0 2 NJ 120 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.hps_0_h2f_mpu_events,(SLAVE)hps_0.h2f_mpu_events) 1 0 2 NJ 220 NJ
-preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_1.reset2,(SLAVE)onchip_memory2_0.reset2,(MASTER)clk_0.clk_reset) 1 1 2 350 290 780
-preplace netloc FAN_OUT<net_container>soc_system</net_container>(MASTER)hps_0.h2f_axi_master,(SLAVE)onchip_memory2_1.s1,(SLAVE)onchip_memory2_0.s1) 1 2 1 760
-preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_1.reset1,(MASTER)hps_0.h2f_reset,(SLAVE)onchip_memory2_0.reset1) 1 2 1 840
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_1.s2,(SLAVE)soc_system.onchip_memory2_1_s2) 1 0 3 NJ 400 NJ 400 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)hps_0.hps_io,(SLAVE)soc_system.hps_io) 1 0 2 NJ 100 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)hps_0.h2f_mpu_events,(SLAVE)soc_system.hps_0_h2f_mpu_events) 1 0 2 NJ 180 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.onchip_memory2_1_s2,(SLAVE)onchip_memory2_1.s2) 1 0 3 NJ 400 NJ 400 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)soc_system.clk) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_1.reset1,(SLAVE)onchip_memory2_0.reset1,(MASTER)hps_0.h2f_reset) 1 2 1 840
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_0.reset2,(MASTER)clk_0.clk_reset,(SLAVE)onchip_memory2_1.reset2) 1 1 2 370 290 780
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)onchip_memory2_1.s1,(SLAVE)onchip_memory2_0.s1,(MASTER)hps_0.h2f_axi_master) 1 2 1 760
 levelinfo -pg 1 0 140 1010
 levelinfo -hier soc_system 150 180 570 890 1000

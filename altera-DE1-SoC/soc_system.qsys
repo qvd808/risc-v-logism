@@ -695,7 +695,7 @@
   <parameter name="slave2Latency" value="1" />
   <parameter name="useNonDefaultInitFile" value="true" />
   <parameter name="useShallowMemBlocks" value="false" />
-  <parameter name="writable" value="false" />
+  <parameter name="writable" value="true" />
  </module>
  <connection
    kind="avalon"
