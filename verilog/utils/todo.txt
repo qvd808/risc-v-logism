@@ -1,0 +1,6 @@
+- Build a decoder inside Control Unit
+- Will need opcode defines in opcode_defines.sv
+- The lowest bit of opcode is 11 which just mean 32 bit instruction and need to handle that
+- We can defines opeartions inside Control Unit such that's if an opcode match something it should be route to that's unit
+- R-Type and I-type should be route to ALU
+- ALU also should only handle +, - or,xor, and basically any O(n) operations, mul and div should be in different unit
