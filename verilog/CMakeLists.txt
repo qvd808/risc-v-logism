@@ -60,6 +60,8 @@ target_include_directories(alucu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 verilate(alucu_sim
 	PREFIX VALUControlUnit
     SOURCES
+		rtl/pkg/alucu_pkg.sv
+		rtl/pkg/alu_pkg.sv
 		rtl/ALUControlUnit.sv
 	TOP_MODULE ALUControlUnit
     TRACE
