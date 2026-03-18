@@ -115,6 +115,24 @@ public:
     }
   }
 
+  template <typename T_GOT, typename T_EXP>
+  int check_signed(const char *signal, T_GOT got, T_EXP expected,
+                   int width = 30) {
+    int32_t got_val = static_cast<int32_t>(got);
+    int32_t exp_val = static_cast<int32_t>(expected);
+
+    if (got_val == exp_val) {
+      std::cout << std::format("  PASS {:<{}} = {}\n", signal, width, got_val);
+      pass_count++;
+      return 0;
+    } else {
+      std::cout << std::format("  [@ {} ps] FAIL {:<{}} got={} expected={}\n",
+                               ctx->time(), signal, width, got_val, exp_val);
+      fail_count++;
+      return 1;
+    }
+  }
+
   // ── Hexadecimal Check ──────────────────────────────────────────
   template <typename T_GOT, typename T_EXP>
   int check_hex(std::string signal, T_GOT got, T_EXP expected, int width = 30) {

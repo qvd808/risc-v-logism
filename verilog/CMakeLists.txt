@@ -25,7 +25,7 @@ target_include_directories(alu_sim PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tb)
 
 verilate(alu_sim
 	PREFIX VALU
-    SOURCES rtl/ALU.sv
+    SOURCES rtl/pkg/alu_pkg.sv rtl/ALU.sv    # pkg must be first
     TOP_MODULE ALU
     TRACE  # Trace waveform
     VERILATOR_ARGS --sv --assert
